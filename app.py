@@ -65,6 +65,23 @@ def pdf(cid,comp):
     ss=getSampleStyleSheet(); ss.add(ParagraphStyle(name="T",parent=ss["Title"],textColor=NAVY,fontSize=22,alignment=TA_CENTER)); ss.add(ParagraphStyle(name="H",parent=ss["Heading2"],textColor=NAVY))
     doc=SimpleDocTemplate(p,pagesize=A4,rightMargin=14*mm,leftMargin=14*mm,topMargin=14*mm,bottomMargin=14*mm)
     s=[]
+    # CAPA DO LIVRO DE PRESTAÇÃO DE CONTAS
+s += [Spacer(1, 35*mm)]
+
+if os.path.exists(LOGO):
+    s += [RLImage(LOGO, width=70*mm, height=35*mm)]
+
+s += [
+    Spacer(1, 25*mm),
+    Paragraph("<b>LIVRO DE PRESTAÇÃO DE CONTAS</b>", ss["Title"]),
+    Spacer(1, 15*mm),
+    Paragraph(f"<b>{co['nome']}</b>", ss["Heading2"]),
+    Spacer(1, 8*mm),
+    Paragraph(f"Competência: {comp}", ss["Heading2"]),
+    Spacer(1, 35*mm),
+    Paragraph("CondoPro — Síndico Profissional", ss["Heading2"]),
+    PageBreak()
+]
     if os.path.exists(LOGO): s += [RLImage(LOGO,width=55*mm,height=36*mm)]
     s += [Paragraph("LIVRO DE PRESTAÇÃO DE CONTAS",ss["T"]),Spacer(1,5*mm),Paragraph(co["nome"],ss["Heading2"]),Paragraph(f"Competência: {comp[5:]}/{comp[:4]} | Síndico: {co['sindico'] or ''}",ss["Normal"]),Spacer(1,8*mm)]
     t=Table([["Saldo anterior",brl(co["saldo_inicial"])],["Receitas",brl(rec)],["Despesas",brl(desp)],["Saldo atual",brl(saldo)]],colWidths=[75*mm,55*mm])
