@@ -1,0 +1,12 @@
+CONDOPRO GESTÃO v3 PROFISSIONAL
+
+Mantém a versão anterior e acrescenta:
+- auditoria das principais operações;
+- backup completo do banco;
+- exportação CSV;
+- proteção de arquivos sensíveis para GitHub;
+- modelo de Secrets;
+- estrutura e instruções para publicação gratuita.
+
+Primeiro acesso local: admin / condopro123
+Troque essa senha antes do uso real.
